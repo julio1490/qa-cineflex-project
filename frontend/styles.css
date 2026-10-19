@@ -1,0 +1,167 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f1f5f9;
+  color: #172033;
+  font-family: Arial, sans-serif;
+}
+
+.encabezado {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 7%;
+  background: #111827;
+  color: white;
+}
+
+.logo {
+  margin-right: auto;
+  color: white;
+  font-size: 1.35rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1000px, 92%);
+  margin: 40px auto;
+}
+
+.panel,
+.movie-card {
+  padding: 28px;
+  border: 1px solid #dbe2ea;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 4px 14px #0f172a12;
+}
+
+.panel {
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+h1 {
+  color: #172554;
+}
+
+label {
+  display: block;
+  margin: 16px 0 6px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #b8c2d1;
+  border-radius: 7px;
+  font-size: 1rem;
+}
+
+.button {
+  margin-top: 18px;
+  padding: 11px 18px;
+  border: 0;
+  border-radius: 7px;
+  background: #e11d48;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #be123c;
+}
+
+.button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.secondary {
+  margin: 0;
+  background: #475569;
+}
+
+.message {
+  min-height: 24px;
+  color: #b91c1c;
+  font-weight: bold;
+}
+
+.movies {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.movie-card h2 {
+  margin-bottom: 6px;
+  font-size: 1.2rem;
+}
+
+.poster {
+  display: grid;
+  min-height: 130px;
+  place-items: center;
+  border-radius: 8px;
+  background: #dbeafe;
+  font-size: 3rem;
+}
+
+.screen {
+  margin: 24px auto;
+  padding: 10px;
+  max-width: 360px;
+  background: #dbeafe;
+  text-align: center;
+  letter-spacing: 5px;
+  font-weight: bold;
+}
+
+.seats {
+  display: grid;
+  grid-template-columns: repeat(3, 60px);
+  justify-content: center;
+  gap: 12px;
+}
+
+.seat {
+  padding: 12px 5px;
+  border: 1px solid #64748b;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+}
+
+.seat.selected {
+  border-color: #047857;
+  background: #10b981;
+  color: white;
+}
+
+.note {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .encabezado {
+    padding: 14px 4%;
+  }
+
+  .container {
+    margin-top: 24px;
+  }
+}

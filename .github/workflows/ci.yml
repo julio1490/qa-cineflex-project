@@ -1,0 +1,43 @@
+name: Pruebas CineFlex
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pruebas-selenium:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el proyecto
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Preparar Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Instalar dependencias
+        run: npm ci
+        working-directory: ui_tests
+
+      - name: Iniciar el servidor del frontend
+        run: |
+          python3 -m http.server 5500 --directory "$GITHUB_WORKSPACE" > /tmp/cineflex.log 2>&1 &
+          for intento in {1..15}; do
+            if curl -fsS http://127.0.0.1:5500/frontend/ > /dev/null; then
+              echo "Frontend disponible"
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/cineflex.log
+          exit 1
+
+      - name: Ejecutar pruebas Selenium
+        run: xvfb-run -a npm test
+        working-directory: ui_tests
+        
